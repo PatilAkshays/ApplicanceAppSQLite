@@ -12,7 +12,6 @@
 @interface APDatabaseManager : NSObject
 {
     sqlite3 *myDB;
-    
 }
 
 +(instancetype) sharedManager;
@@ -20,11 +19,11 @@
 
 -(int)executeQuery:(NSString *)query;
 
--(NSMutableArray *)getAllTask1;
+-(NSMutableArray *)getAllTaskWatch;
 
--(NSMutableArray *)getAllTask2;
+-(NSMutableArray *)getAllTaskPc;
 
--(NSMutableArray *)getAllTask3;
+-(NSMutableArray *)getAllTaskLapTop;
 
 
 

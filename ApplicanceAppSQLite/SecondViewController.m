@@ -63,38 +63,17 @@
             if (taskThird.length > 0) {
                 
         
-        NSString *insertQuery1 = [NSString stringWithFormat:@"INSERT INTO TASK_TABLE(TASK_ID,TASK1,TASK2,TASK3) VALUES('%@','%@','%@','%@')",_textFieldFirst.text.uppercaseString,_textFieldFirst.text,_textFieldSecond.text,_textFieldThird.text];
+        NSString *insertQuery1 = [NSString stringWithFormat:@"INSERT INTO DEVICE_TABLE(DEVICE_ID,DEVICE_NAME,DEVICE_COMPANY,DEVICE_PRICE,DEVICE_TYPE) VALUES('%@','%@','%@','%@','WATCH')",_textFieldFirst.text.uppercaseString,_textFieldFirst.text,_textFieldSecond.text,_textFieldThird.text];
                 
                 
-//        NSString *insertQuery2 = [NSString stringWithFormat:@"INSERT INTO TASK_TABLE(TASK_ID,TASK) VALUES('%@','%@')",taskSecond.uppercaseString,taskSecond];
-//                
-//        NSString *insertQuery3 = [NSString stringWithFormat:@"INSERT INTO TASK_TABLE(TASK_ID,TASK) VALUES('%@','%@')",taskThird.uppercaseString,taskThird];
-//        
 
-                NSLog(@"%@",insertQuery1);
-//                NSLog(@"%@",insertQuery2);
-//                NSLog(@"%@",insertQuery3);
-//
-        
+      NSLog(@"%@",insertQuery1);
+       
         int result1 = [[APDatabaseManager sharedManager]executeQuery:insertQuery1];
         
-                
-//        int result2 = [[APDatabaseManager sharedManager]executeQuery:insertQuery2];
-//
-//        int result3 = [[APDatabaseManager sharedManager]executeQuery:insertQuery3];
-
-                
-        
+    
         if (result1 == 1) {
             NSLog(@"Successfully inserted Task");
-        }
-       else if (result1 == 1){
-            NSLog(@"Successfully inserted Task");
-
-        }
-        else if (result1 == 1){
-            NSLog(@"Successfully inserted Task");
-            
         }
         else {
             NSLog(@"Unable to insert task in SQLite Database");
@@ -113,112 +92,92 @@
     else {
         NSLog(@"Enter Task First to Save.");
     }
+
    }
     
-       else if(localSegment.selectedSegmentIndex == 1) {
-           
-           
-           if (taskFirst.length > 0) {
-               
-               if (taskSecond.length > 0) {
-                   
-                   if (taskThird.length > 0) {
-                       
-                       
-                       NSString *insertQuery1 = [NSString stringWithFormat:@"INSERT INTO TASK_TABLE(TASK_ID,TASK1,TASK2,TASK3) VALUES('%@','%@','%@','%@')",_textFieldFirst.text.uppercaseString,_textFieldFirst.text,_textFieldSecond.text,_textFieldThird.text];
-                       
-                       
-                       
-                       NSLog(@"%@",insertQuery1);
-                       
-                       int result1 = [[APDatabaseManager sharedManager]executeQuery:insertQuery1];
-                       
-                       
-                       
-                       
-                       if (result1 == 1) {
-                           NSLog(@"Successfully inserted Task");
-                       }
-                       else if (result1 == 1){
-                           NSLog(@"Successfully inserted Task");
-                           
-                       }
-                       else if (result1 == 1){
-                           NSLog(@"Successfully inserted Task");
-                           
-                       }
-                       else {
-                           NSLog(@"Unable to insert task in SQLite Database");
-                       }
-                       
-                       
-                       NSLog(@"Task Saved : %@",taskFirst);
-                       
-                       self.textFieldFirst.text = @"";
-                       self.textFieldSecond.text = @"";
-                       self.textFieldThird.text = @"";
-                       
-                   }
-               }
-           }
-           else {
-               NSLog(@"Enter Task First to Save.");
-           }
-         }
-       else if(localSegment.selectedSegmentIndex == 2) {
-           
-           
-           if (taskFirst.length > 0) {
-               
-               if (taskSecond.length > 0) {
-                   
-                   if (taskThird.length > 0) {
-                       
-                       
-                       NSString *insertQuery1 = [NSString stringWithFormat:@"INSERT INTO TASK_TABLE(TASK_ID,TASK1,TASK2,TASK3) VALUES('%@','%@','%@','%@')",_textFieldFirst.text.uppercaseString,_textFieldFirst.text,_textFieldSecond.text,_textFieldThird.text];
-                       
-                       
-                       
-                       NSLog(@"%@",insertQuery1);
-                       
-                       int result1 = [[APDatabaseManager sharedManager]executeQuery:insertQuery1];
-                       
-                       
-                       
-                       
-                       if (result1 == 1) {
-                           NSLog(@"Successfully inserted Task");
-                       }
-                       else if (result1 == 1){
-                           NSLog(@"Successfully inserted Task");
-                           
-                       }
-                       else if (result1 == 1){
-                           NSLog(@"Successfully inserted Task");
-                           
-                       }
-                       else {
-                           NSLog(@"Unable to insert task in SQLite Database");
-                       }
-                       
-                       
-                       NSLog(@"Task Saved : %@",taskFirst);
-                       
-                       self.textFieldFirst.text = @"";
-                       self.textFieldSecond.text = @"";
-                       self.textFieldThird.text = @"";
-                       
-                   }
-               }
-           }
-           else {
-               NSLog(@"Enter Task First to Save.");
-           }
-       }
-
-
+    else if (localSegment.selectedSegmentIndex == 1) {
+        
+        
+        if (taskFirst.length > 0) {
+            
+            if (taskSecond.length > 0) {
+                
+                if (taskThird.length > 0) {
+                    
+                    
+                    NSString *insertQuery1 = [NSString stringWithFormat:@"INSERT INTO DEVICE_TABLE(DEVICE_ID,DEVICE_NAME,DEVICE_COMPANY,DEVICE_PRICE,DEVICE_TYPE) VALUES('%@','%@','%@','%@','PC')",_textFieldFirst.text.uppercaseString,_textFieldFirst.text,_textFieldSecond.text,_textFieldThird.text];
+                    
+                    
+                    
+                    NSLog(@"%@",insertQuery1);
+                    
+                    int result1 = [[APDatabaseManager sharedManager]executeQuery:insertQuery1];
+                    
+                    
+                    if (result1 == 1) {
+                        NSLog(@"Successfully inserted Task");
+                    }
+                    else {
+                        NSLog(@"Unable to insert task in SQLite Database");
+                    }
+                    
+                    
+                    NSLog(@"Task Saved : %@",taskFirst);
+                    
+                    self.textFieldFirst.text = @"";
+                    self.textFieldSecond.text = @"";
+                    self.textFieldThird.text = @"";
+                    
+                }
+            }
+        }
+        else {
+            NSLog(@"Enter Task First to Save.");
+        }
+        
+    }
+    else if (localSegment.selectedSegmentIndex == 2) {
+        
+        
+        if (taskFirst.length > 0) {
+            
+            if (taskSecond.length > 0) {
+                
+                if (taskThird.length > 0) {
+                    
+                    
+                    NSString *insertQuery1 = [NSString stringWithFormat:@"INSERT INTO DEVICE_TABLE(DEVICE_ID,DEVICE_NAME,DEVICE_COMPANY,DEVICE_PRICE,DEVICE_TYPE) VALUES('%@','%@','%@','%@','LAPTOP')",_textFieldFirst.text.uppercaseString,_textFieldFirst.text,_textFieldSecond.text,_textFieldThird.text];
+                    
+                    
+                    
+                    NSLog(@"%@",insertQuery1);
+                    
+                    int result1 = [[APDatabaseManager sharedManager]executeQuery:insertQuery1];
+                    
+                    
+                    if (result1 == 1) {
+                        NSLog(@"Successfully inserted Task");
+                    }
+                    else {
+                        NSLog(@"Unable to insert task in SQLite Database");
+                    }
+                    
+                    
+                    NSLog(@"Task Saved : %@",taskFirst);
+                    
+                    self.textFieldFirst.text = @"";
+                    self.textFieldSecond.text = @"";
+                    self.textFieldThird.text = @"";
+                    
+                }
+            }
+        }
+        else {
+            NSLog(@"Enter Task First to Save.");
+        }
+        
+    }
 }
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
@@ -255,7 +214,7 @@
         
         [_textFieldSecond setPlaceholder:@"Enter Price:"];
         
-        [_textFieldThird setPlaceholder:@"Enter Warranty Year:"];
+        [_textFieldThird setPlaceholder:@"Enter Warranty:"];
         
         
         [self saveTask];
@@ -265,9 +224,9 @@
         
         [_textFieldFirst setPlaceholder:@"Enter Company:"];
         
-        [_textFieldSecond setPlaceholder:@"Enter Warranty:"];
+        [_textFieldSecond setPlaceholder:@"Enter Price:"];
         
-        [_textFieldThird setPlaceholder:@"Enter Price:"];
+        [_textFieldThird setPlaceholder:@"Enter Warranty:"];
         
         [self saveTask];
     }

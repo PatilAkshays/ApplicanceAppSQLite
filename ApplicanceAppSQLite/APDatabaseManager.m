@@ -24,7 +24,7 @@
 }
 
 -(NSString *)getDatabasePath {
-    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/SBDatabase.sqlite"];
+    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/DatabaseFile.sqlite"];
 }
 
 
@@ -53,7 +53,7 @@
     
 }
 
--(NSMutableArray *)getAllTask1 {
+-(NSMutableArray *)getAllTaskWatch {
     
     
     
@@ -61,7 +61,7 @@
     
     sqlite3_stmt *statement;
     
-    NSString *query = @"SELECT TASK1,TASK2,TASK3 FROM TASK_TABLE";
+    NSString *query = @"SELECT * FROM DEVICE_TABLE WHERE DEVICE_TYPE = 'WATCH'";
     
     const char *UTFquery = [query UTF8String];
     const char *UTFDatabasePath = [[self getDatabasePath] UTF8String];
@@ -73,14 +73,29 @@
             while (sqlite3_step(statement) == SQLITE_ROW) {
                 
                 const char * taskString = (const char *)sqlite3_column_text(statement, 0);
+                const char * modelString = (const char *)sqlite3_column_text(statement, 1);
+                const char * priceString = (const char *)sqlite3_column_text(statement, 2);
+                const char * yearString = (const char *)sqlite3_column_text(statement, 3);
+                const char * deviceType = (const char *)sqlite3_column_text(statement, 4);
+
+                
+                NSString *taskID = [NSString stringWithUTF8String:taskString];
+                
+                NSString *model = [NSString stringWithUTF8String:modelString];
+                
+                NSString *price = [NSString stringWithUTF8String:priceString];
+                NSString *year = [NSString stringWithUTF8String:yearString];
+               
+                NSString *deviceTypes = [NSString stringWithUTF8String:deviceType];
+
+                
+                NSDictionary *watchDic = [[NSDictionary alloc]initWithObjects:@[taskID,model,price,year,deviceTypes] forKeys:@[@"watch_id",@"model",@"price",@"year",@"WATCH"]];
                 
                 
                 
-                NSString *task = [NSString stringWithUTF8String:taskString];
+                [mArray addObject:watchDic];
                 
-                [mArray addObject:task];
-                
-                
+                NSLog(@"%@",mArray);
                 
             }
             
@@ -88,11 +103,13 @@
         
         sqlite3_close(myDB);
     }
-    
+
     return mArray;
     
+    
+    
 }
--(NSMutableArray *)getAllTask2 {
+-(NSMutableArray *)getAllTaskPc {
     
     
     
@@ -100,7 +117,7 @@
     
     sqlite3_stmt *statement;
     
-    NSString *query = @"SELECT TASK1,TASK2,TASK3 FROM TASK_TABLE";
+    NSString *query = @"SELECT * FROM DEVICE_TABLE WHERE DEVICE_TYPE = 'PC'";
     
     const char *UTFquery = [query UTF8String];
     const char *UTFDatabasePath = [[self getDatabasePath] UTF8String];
@@ -112,15 +129,30 @@
             while (sqlite3_step(statement) == SQLITE_ROW) {
                 
                 const char * taskString = (const char *)sqlite3_column_text(statement, 0);
+                const char * companyString = (const char *)sqlite3_column_text(statement, 1);
+                const char * priceString = (const char *)sqlite3_column_text(statement, 2);
+                const char * yearString = (const char *)sqlite3_column_text(statement, 3);
+                const char * deviceType = (const char *)sqlite3_column_text(statement, 4);
+                
+
+                
+                NSString *taskID = [NSString stringWithUTF8String:taskString];
+                
+                NSString *company = [NSString stringWithUTF8String:companyString];
+                
+                NSString *price = [NSString stringWithUTF8String:priceString];
+                NSString *year = [NSString stringWithUTF8String:yearString];
+                NSString *deviceTypes = [NSString stringWithUTF8String:deviceType];
+                
+                NSDictionary *pcDic = [[NSDictionary alloc]initWithObjects:@[taskID,company,price,year,deviceTypes] forKeys:@[@"pc_id",@"company",@"price",@"year",@"PC"]];
                 
                 
                 
-                NSString *task = [NSString stringWithUTF8String:taskString];
+                [mArray addObject:pcDic];
+
                 
-                [mArray addObject:task];
-                
-                
-                
+                NSLog(@"%@",mArray);
+
             }
             
         }
@@ -132,7 +164,7 @@
     
 }
 
--(NSMutableArray *)getAllTask3 {
+-(NSMutableArray *)getAllTaskLapTop {
     
     
     
@@ -140,7 +172,7 @@
     
     sqlite3_stmt *statement;
     
-    NSString *query = @"SELECT TASK1,TASK2,TASK3 FROM TASK_TABLE";
+    NSString *query = @"SELECT * FROM DEVICE_TABLE WHERE DEVICE_TYPE = 'LAPTOP'";
     
     const char *UTFquery = [query UTF8String];
     const char *UTFDatabasePath = [[self getDatabasePath] UTF8String];
@@ -152,13 +184,29 @@
             while (sqlite3_step(statement) == SQLITE_ROW) {
                 
                 const char * taskString = (const char *)sqlite3_column_text(statement, 0);
+                const char * companyString = (const char *)sqlite3_column_text(statement, 1);
+                const char * modelString = (const char *)sqlite3_column_text(statement, 2);
+                const char * yearString = (const char *)sqlite3_column_text(statement, 3);
+                const char * deviceType = (const char *)sqlite3_column_text(statement, 4);
+
+                
+                NSString *taskID = [NSString stringWithUTF8String:taskString];
+                
+                NSString *company = [NSString stringWithUTF8String:companyString];
+                
+                NSString *price = [NSString stringWithUTF8String:modelString];
+                NSString *year = [NSString stringWithUTF8String:yearString];
+                NSString *deviceTypes = [NSString stringWithUTF8String:deviceType];
+
+                
+                NSDictionary *lapTopDic = [[NSDictionary alloc]initWithObjects:@[taskID,company,price,year,deviceTypes] forKeys:@[@"lapTop_id",@"company",@"model",@"year",@"LAPTOP"]];
                 
                 
                 
-                NSString *task = [NSString stringWithUTF8String:taskString];
+                [mArray addObject:lapTopDic];
                 
-                [mArray addObject:task];
                 
+                NSLog(@"%@",mArray);
                 
                 
             }
@@ -167,7 +215,7 @@
         
         sqlite3_close(myDB);
     }
-    
+   
     return mArray;
     
 }

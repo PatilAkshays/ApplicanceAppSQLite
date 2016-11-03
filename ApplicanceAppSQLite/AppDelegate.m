@@ -22,7 +22,7 @@
     
     NSString *sourcePath = [[NSBundle mainBundle]pathForResource:@"Aksh" ofType:@"sqlite"];
     
-    NSString *destionationPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/SBDatabase.sqlite"];
+    NSString *destionationPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/DatabaseFile.sqlite"];
     
     
     NSLog(@"%@",destionationPath);

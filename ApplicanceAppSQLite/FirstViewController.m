@@ -43,21 +43,21 @@
 -(void)reloadTask {
     if (localSegment.selectedSegmentIndex == 0) {
         
-        watchArray = [[APDatabaseManager sharedManager]getAllTask1];
+        watchArray = [[APDatabaseManager sharedManager]getAllTaskWatch];
         [self.tabelView reloadData];
         
-        
+        NSLog(@"%@",watchArray);
 
     }
     else if (localSegment.selectedSegmentIndex == 1){
         
-        pcArray = [[APDatabaseManager sharedManager]getAllTask2];
+        pcArray = [[APDatabaseManager sharedManager]getAllTaskPc];
         [self.tabelView reloadData];
 
     }
     else if (localSegment.selectedSegmentIndex == 2){
 
-    lapTopArray = [[APDatabaseManager sharedManager]getAllTask3];
+    lapTopArray = [[APDatabaseManager sharedManager]getAllTaskLapTop];
 
     [self.tabelView reloadData];
     }
@@ -72,10 +72,13 @@
     
     if (localSegment.selectedSegmentIndex == 0) {
         return watchArray.count;
+        
+        
     }
     else if (localSegment.selectedSegmentIndex == 1){
         return pcArray.count;
     }
+    
     else if (localSegment.selectedSegmentIndex == 2){
         return lapTopArray.count;
     }
@@ -92,32 +95,51 @@
     if (localSegment.selectedSegmentIndex == 0) {
         
 
-      cell.labelFirst.text = [watchArray objectAtIndex:indexPath.row];
-    
-      cell.labelSecond.text = [watchArray objectAtIndex:indexPath.row];
-
-      cell.labelThird.text = [watchArray objectAtIndex:indexPath.row];
-       
+        NSDictionary *watchData = [watchArray objectAtIndex:indexPath.row];
         
-        NSLog(@"%@",watchArray);
+       // NSLog(@"%@",watchData);
+        
+        
+      cell.labelFirst.text = [watchData valueForKey:@"model"];
+    
+      cell.labelSecond.text = [watchData valueForKey:@"price"];
+
+      cell.labelThird.text = [watchData valueForKey:@"year"];
+       
+//        NSLog(@"%@",cell.labelFirst.text);
+//        NSLog(@"%@",cell.labelSecond.text);
+//        NSLog(@"%@",cell.labelThird.text);
+        
+        
+
+//        NSLog(@"%@",watchArray);
     }
     else if(localSegment.selectedSegmentIndex ==  1){
 
-        cell.labelFirst.text = [pcArray objectAtIndex:indexPath.row];
+        NSDictionary *pcData = [pcArray objectAtIndex:indexPath.row];
         
-        cell.labelSecond.text = [pcArray objectAtIndex:indexPath.row];
+       // NSLog(@"%@",pcData);
         
-        cell.labelThird.text = [pcArray objectAtIndex:indexPath.row];
-
-    }
+        
+        cell.labelFirst.text = [pcData valueForKey:@"company"];
+        
+        cell.labelSecond.text = [pcData valueForKey:@"price"];
+        
+        cell.labelThird.text = [pcData valueForKey:@"year"];
+        
+           }
     else if(localSegment.selectedSegmentIndex ==  2){
         
-        cell.labelFirst.text = [lapTopArray objectAtIndex:indexPath.row];
+        NSDictionary *lapTopData = [lapTopArray objectAtIndex:indexPath.row];
         
-        cell.labelSecond.text = [lapTopArray objectAtIndex:indexPath.row];
+       // NSLog(@"%@",lapTopData);
         
-        cell.labelThird.text = [lapTopArray objectAtIndex:indexPath.row];
         
+        cell.labelFirst.text = [lapTopData valueForKey:@"company"];
+        
+        cell.labelSecond.text = [lapTopData valueForKey:@"model"];
+        
+        cell.labelThird.text = [lapTopData valueForKey:@"year"];
     }
     
     return cell;
@@ -131,7 +153,7 @@
 
     NSString *task = [watchArray objectAtIndex:indexPath.row];
     
-    NSString *deleteQuery = [NSString stringWithFormat:@"DELETE FROM TASK_TABLE WHERE TASK_ID = '%@'",task.uppercaseString];
+    NSString *deleteQuery = [NSString stringWithFormat:@"DELETE FROM DEVICE_TABLE WHERE DEVICE_ID = '%@'",[task valueForKey:@"watch_id"]];
     
     if ([[APDatabaseManager sharedManager]executeQuery:deleteQuery] == 1) {
         NSLog(@"Successfully Deleted");
@@ -146,7 +168,7 @@
         
         NSString *task = [pcArray objectAtIndex:indexPath.row];
         
-        NSString *deleteQuery = [NSString stringWithFormat:@"DELETE FROM TASK_TABLE WHERE TASK_ID = '%@'",task.uppercaseString];
+        NSString *deleteQuery = [NSString stringWithFormat:@"DELETE FROM DEVICE_TABLE WHERE DEVICE_ID = '%@'",[task valueForKey:@"pc_id"]];
         
         if ([[APDatabaseManager sharedManager]executeQuery:deleteQuery] == 1) {
             NSLog(@"Successfully Deleted");
@@ -161,7 +183,7 @@
         
         NSString *task = [lapTopArray objectAtIndex:indexPath.row];
         
-        NSString *deleteQuery = [NSString stringWithFormat:@"DELETE FROM TASK_TABLE WHERE TASK_ID = '%@'",task.uppercaseString];
+        NSString *deleteQuery = [NSString stringWithFormat:@"DELETE FROM DEVICE_TABLE WHERE DEVICE_ID = '%@'",[task valueForKey:@"lapTop_id"]];
         
         if ([[APDatabaseManager sharedManager]executeQuery:deleteQuery] == 1) {
             NSLog(@"Successfully Deleted");

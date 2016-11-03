@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		046F3B251DAE63F400388FEB /* Aksh.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 046F3B241DAE63F400388FEB /* Aksh.sqlite */; };
+		044E490B1DCB1804001641B2 /* Aksh.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 044E490A1DCB1804001641B2 /* Aksh.sqlite */; };
 		04778D161DACC4850001B354 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04778D151DACC4850001B354 /* main.m */; };
 		04778D191DACC4850001B354 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04778D181DACC4850001B354 /* AppDelegate.m */; };
 		04778D1C1DACC4850001B354 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04778D1B1DACC4850001B354 /* FirstViewController.m */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		046F3B241DAE63F400388FEB /* Aksh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aksh.sqlite; sourceTree = "<group>"; };
+		044E490A1DCB1804001641B2 /* Aksh.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aksh.sqlite; sourceTree = "<group>"; };
 		04778D111DACC4850001B354 /* ApplicanceAppSQLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplicanceAppSQLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04778D151DACC4850001B354 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04778D171DACC4850001B354 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		04778D131DACC4850001B354 /* ApplicanceAppSQLite */ = {
 			isa = PBXGroup;
 			children = (
-				046F3B241DAE63F400388FEB /* Aksh.sqlite */,
+				044E490A1DCB1804001641B2 /* Aksh.sqlite */,
 				04778D171DACC4850001B354 /* AppDelegate.h */,
 				04778D181DACC4850001B354 /* AppDelegate.m */,
 				04778D1A1DACC4850001B354 /* FirstViewController.h */,
@@ -160,7 +160,7 @@
 			files = (
 				04778D271DACC4850001B354 /* LaunchScreen.storyboard in Resources */,
 				04778D241DACC4850001B354 /* Assets.xcassets in Resources */,
-				046F3B251DAE63F400388FEB /* Aksh.sqlite in Resources */,
+				044E490B1DCB1804001641B2 /* Aksh.sqlite in Resources */,
 				04778D221DACC4850001B354 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
